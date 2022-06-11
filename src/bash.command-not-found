@@ -1,86 +1,21 @@
 print_message () {
 
-    local messages
     local message
-
-    messages=(
-        "Boooo!"
-        "Don't you know anything?"
-        "RTFM!"
-        "Haha, n00b!"
-        "Wow! That was impressively wrong!"
-        "Pathetic"
-        "The worst one today!"
-        "n00b alert!"
-        "Your application for reduced salary has been sent!"
-        "lol"
-        "u suk"
-        "lol... plz"
-        "plz uninstall"
-        "And the Darwin Award goes to.... ${USER}!"
-        "ERROR_INCOMPETENT_USER"
-        "Incompetence is also a form of competence"
-        "Bad."
-        "Fake it till you make it!"
-        "What is this...? Amateur hour!?"
-        "Come on! You can do it!"
-        "Nice try."
-        "What if... you type an actual command the next time!"
-        "What if I told you... it is possible to type valid commands."
-        "Y u no speak computer???"
-        "This is not Windows"
-        "Perhaps you should leave the command line alone..."
-        "Please step away from the keyboard!"
-        "error code: 1D10T"
-        "ACHTUNG! ALLES TURISTEN UND NONTEKNISCHEN LOOKENPEEPERS! DAS KOMPUTERMASCHINE IST NICHT FÜR DER GEFINGERPOKEN UND MITTENGRABEN! ODERWISE IST EASY TO SCHNAPPEN DER SPRINGENWERK, BLOWENFUSEN UND POPPENCORKEN MIT SPITZENSPARKEN. IST NICHT FÜR GEWERKEN BEI DUMMKOPFEN. DER RUBBERNECKEN SIGHTSEEREN KEEPEN DAS COTTONPICKEN HÄNDER IN DAS POCKETS MUSS. ZO RELAXEN UND WATSCHEN DER BLINKENLICHTEN."
-        "Pro tip: type a valid command!"
-        "Go outside."
-        "This is not a search engine."
-        "(╯°□°）╯︵ ┻━┻"
-        "¯\\_(ツ)_/¯"
-        "So, I'm just going to go ahead and run rm -rf / for you."
-        "Why are you so stupid?!"
-        "Perhaps computers is not for you..."
-        "Why are you doing this to me?!"
-        "Don't you have anything better to do?!"
-        "I am _seriously_ considering 'rm -rf /'-ing myself..."
-        "This is why you get to see your children only once a month."
-        "This is why nobody likes you."
-        "Are you even trying?!"
-        "Try using your brain the next time!"
-        "My keyboard is not a touch screen!"
-        "Commands, random gibberish, who cares!"
-        "Typing incorrect commands, eh?"
-        "Are you always this stupid or are you making a special effort today?!"
-        "Dropped on your head as a baby, eh?"
-        "Brains aren't everything. In your case they're nothing."
-        "I don't know what makes you so stupid, but it really works."
-        "You are not as bad as people say, you are much, much worse."
-        "Two wrongs don't make a right, take your parents as an example."
-        "You must have been born on a highway because that's where most accidents happen."
-        "If what you don't know can't hurt you, you're invulnerable."
-        "If ignorance is bliss, you must be the happiest person on earth."
-        "You're proof that god has a sense of humor."
-        "Keep trying, someday you'll do something intelligent!"
-        "If shit was music, you'd be an orchestra."
-        "How many times do I have to flush before you go away?"
-    )
-
-    # If CMD_NOT_FOUND_MSGS array is populated use those messages instead of the defaults
-    [[ -n ${CMD_NOT_FOUND_MSGS} ]] && messages=( "${CMD_NOT_FOUND_MSGS[@]}" )
-
-    # If CMD_NOT_FOUND_MSGS_APPEND array is populated append those to the existing messages
-    [[ -n ${CMD_NOT_FOUND_MSGS_APPEND} ]] && messages+=( "${CMD_NOT_FOUND_MSGS_APPEND[@]}" )
-
-    # Seed RANDOM with an integer of some length
-    RANDOM=$(od -vAn -N4 -tu < /dev/urandom)
-
-    # Print a randomly selected message, but only about half the time to annoy the user a
-    # little bit less.
-    if [[ $((${RANDOM} % 2)) -lt 1 ]]; then
-        message=${messages[${RANDOM} % ${#messages[@]}]}
-        printf "\\n  %s\\n\\n" "$(tput bold)$(tput setaf 1)${message}$(tput sgr0)" >&2
-    fi
+    message="\033[48;5;235m\033[38;5;236m▄\033[48;5;236m   \033[48;5;237m   \033[48;5;240m\033[38;5;237m▄\033[48;5;237m\033[38;5;236m▄  \033[48;5;240m\033[38;5;237m▄\033[48;5;237m\033[38;5;236m▄\033[48;5;236m     \033[48;5;237m▄\033[48;5;180m\033[38;5;186m▄\033[48;5;144m \033[48;5;137m\033[38;5;143m▄\033[48;5;143m  \033[48;5;101m\033[38;5;137m▄\033[48;5;94m\033[38;5;101m▄\033[48;5;101m \033[48;5;59m▄\033[48;5;65m▄\033[48;5;245m\033[38;5;109m▄\033[48;5;145m\033[38;5;243m▄\033[48;5;109m \033[49m
+\033[48;5;236m  \033[48;5;240m     \033[48;5;236m  \033[38;5;235m▄▄▄▄▄▄\033[48;5;235m  \033[38;5;234m▄ \033[48;5;186m\033[38;5;187m▄\033[48;5;144m \033[48;5;180m▄\033[48;5;137m \033[48;5;144m\033[38;5;180m▄ \033[48;5;101m \033[48;5;240m\033[38;5;95m▄\033[48;5;101m\033[38;5;107m▄ \033[48;5;152m\033[38;5;159m▄\033[48;5;244m\033[38;5;102m▄\033[48;5;109m\033[38;5;152m▄\033[49m
+\033[48;5;235m\033[38;5;236m▄\033[48;5;236m \033[48;5;240m\033[38;5;235m▄▄\033[38;5;236m▄\033[48;5;236m\033[38;5;234m▄\033[48;5;235m \033[48;5;236m▄\033[48;5;235m\033[38;5;232m▄\033[38;5;233m▄\033[38;5;234m▄\033[48;5;234m\033[38;5;233m▄\033[48;5;235m▄\033[48;5;234m▄\033[48;5;235m\033[38;5;234m▄\033[48;5;234m\033[38;5;233m▄   \033[48;5;187m\033[38;5;234m▄  \033[48;5;137m\033[38;5;144m▄\033[48;5;180m \033[48;5;144m\033[38;5;180m▄\033[48;5;137m \033[48;5;101m \033[48;5;108m\033[38;5;144m▄\033[48;5;101m \033[48;5;159m \033[48;5;108m \033[48;5;152m \033[49m
+\033[48;5;235m  \033[48;5;236m\033[38;5;235m▄▄\033[48;5;235m  \033[48;5;232m \033[48;5;233m\033[38;5;232m▄\033[48;5;232m\033[38;5;95m▄\033[48;5;233m\033[38;5;137m▄\033[48;5;238m▄\033[48;5;95m▄▄\033[48;5;232m▄\033[48;5;233m▄\033[48;5;234m\033[38;5;232m▄\033[48;5;233m ▄  \033[48;5;187m\033[38;5;253m▄\033[48;5;181m\033[38;5;144m▄\033[48;5;180m\033[38;5;187m▄\033[48;5;144m\033[38;5;143m▄ \033[48;5;101m\033[38;5;137m▄\033[48;5;137m\033[38;5;101m▄\033[48;5;144m \033[48;5;101m\033[38;5;102m▄\033[48;5;159m\033[38;5;152m▄\033[48;5;108m \033[48;5;152m\033[38;5;109m▄\033[49m
+\033[48;5;235m\033[38;5;236m▄▄\033[48;5;236m\033[38;5;235m▄\033[48;5;235m \033[38;5;232m▄\033[48;5;234m \033[48;5;233m\033[38;5;237m▄\033[38;5;138m▄\033[48;5;137m\033[38;5;144m▄▄\033[48;5;174m\033[38;5;138m▄\033[48;5;180m\033[38;5;137m▄\033[48;5;173m▄ \033[48;5;137m  \033[48;5;233m\033[38;5;232m▄   \033[48;5;188m\033[38;5;187m▄\033[48;5;144m \033[48;5;187m \033[48;5;137m \033[48;5;180m \033[48;5;144m \033[48;5;101m \033[48;5;144m \033[48;5;108m \033[48;5;152m \033[48;5;109m \033[48;5;108m \033[49m
+\033[48;5;236m \033[38;5;235m▄\033[48;5;233m\033[38;5;236m▄\033[48;5;235m ▄ \033[48;5;236m\033[38;5;237m▄\033[48;5;138m\033[38;5;144m▄\033[48;5;180m \033[38;5;137m▄\033[38;5;95m▄\033[38;5;239m▄\033[38;5;240m▄\033[48;5;173m \033[38;5;180m▄\033[48;5;137m  \033[48;5;234m \033[48;5;233m \033[38;5;232m▄\033[48;5;249m▄\033[48;5;187m \033[48;5;144m \033[38;5;180m▄\033[48;5;180m\033[38;5;144m▄\033[48;5;144m\033[38;5;180m▄\033[48;5;101m  \033[48;5;247m\033[38;5;248m▄\033[48;5;109m \033[38;5;151m▄\033[48;5;108m \033[49m
+\033[48;5;236m   \033[48;5;235m\033[38;5;236m▄\033[48;5;237m\033[38;5;238m▄\033[48;5;236m\033[38;5;234m▄\033[48;5;235m \033[48;5;180m \033[48;5;144m\033[38;5;137m▄\033[48;5;137m \033[48;5;240m\033[38;5;95m▄\033[48;5;94m▄\033[48;5;131m\033[38;5;137m▄\033[48;5;173m\033[38;5;138m▄\033[48;5;137m \033[38;5;239m▄\033[48;5;95m \033[48;5;233m  \033[48;5;232m  \033[48;5;187m \033[48;5;144m \033[48;5;187m \033[48;5;144m\033[38;5;137m▄\033[48;5;180m \033[48;5;137m \033[48;5;101m\033[38;5;59m▄\033[48;5;248m\033[38;5;145m▄\033[48;5;109m \033[48;5;152m \033[48;5;109m \033[49m
+\033[48;5;236m  \033[48;5;235m\033[38;5;236m▄ \033[38;5;95m▄\033[48;5;239m▄\033[48;5;95m\033[38;5;239m▄\033[48;5;144m \033[48;5;180m  \033[38;5;137m▄\033[48;5;137m\033[38;5;180m▄\033[48;5;180m \033[38;5;137m▄\033[48;5;174m\033[38;5;138m▄\033[48;5;131m\033[38;5;137m▄\033[48;5;95m▄\033[48;5;233m  \033[48;5;232m  \033[48;5;187m \033[48;5;144m \033[48;5;187m \033[48;5;137m\033[38;5;144m▄\033[48;5;180m\033[38;5;187m▄\033[48;5;137m \033[48;5;240m\033[38;5;101m▄\033[48;5;145m\033[38;5;248m▄\033[48;5;109m \033[48;5;159m \033[48;5;109m \033[49m
+\033[48;5;236m   \033[48;5;235m\033[38;5;234m▄\033[48;5;95m▄\033[48;5;138m\033[38;5;180m▄\033[48;5;237m\033[38;5;137m▄\033[48;5;144m\033[38;5;138m▄\033[48;5;180m \033[38;5;174m▄ ▄\033[48;5;173m\033[38;5;138m▄\033[48;5;240m\033[38;5;137m▄\033[48;5;131m▄\033[48;5;217m\033[38;5;95m▄\033[48;5;137m\033[38;5;232m▄\033[48;5;233m  \033[48;5;232m \033[48;5;233m▄\033[48;5;144m\033[38;5;233m▄\033[48;5;187m \033[48;5;144m \033[38;5;187m▄\033[48;5;180m\033[38;5;144m▄\033[48;5;137m\033[38;5;101m▄\033[48;5;101m \033[48;5;248m \033[48;5;108m \033[48;5;159m \033[48;5;109m \033[49m
+\033[48;5;236m   \033[48;5;235m\033[38;5;237m▄\033[48;5;234m \033[48;5;233m\033[38;5;234m▄\033[48;5;137m \033[48;5;101m\033[38;5;95m▄\033[48;5;137m \033[48;5;138m\033[38;5;137m▄\033[48;5;174m\033[38;5;144m▄\033[48;5;137m\033[38;5;95m▄▄\033[48;5;174m\033[38;5;131m▄\033[48;5;137m▄\033[48;5;101m\033[38;5;137m▄\033[48;5;232m \033[48;5;233m  \033[48;5;232m\033[38;5;233m▄\033[48;5;233m  \033[48;5;187m \033[48;5;144m \033[48;5;187m \033[48;5;143m\033[38;5;137m▄\033[38;5;144m▄\033[48;5;101m \033[48;5;248m\033[38;5;247m▄\033[48;5;108m \033[48;5;159m \033[48;5;109m \033[49m
+\033[48;5;240m \033[48;5;237m\033[38;5;240m▄ \033[48;5;235m\033[38;5;234m▄\033[48;5;233m▄\033[48;5;236m\033[38;5;95m▄\033[48;5;137m\033[38;5;101m▄\033[48;5;101m \033[38;5;95m▄\033[48;5;144m\033[38;5;15mq\033[48;5;137mui\033[48;5;179men\033[38;5;137m\033[48;5;173m▄\033[48;5;238m\033[38;5;15mc\033[48;5;232mh\033[48;5;233mota s\033[48;5;187m\033[38;5;238mo\033[48;5;144ms\033[48;5;251m\033[38;5;15m \033[48;5;101m\033[38;5;231m \033[48;5;144m \033[48;5;101m \033[48;5;247m\033[38;5;108m▄\033[48;5;108m \033[48;5;159m \033[48;5;109m \033[49m
+\033[38;5;240m▀\033[38;5;236m▀▀\033[38;5;235m▀▀\033[38;5;95m▀▀▀\033[38;5;101m▀\033[38;5;95m▀▀\033[38;5;138m▀\033[38;5;137m▀▀\033[38;5;95m▀\033[38;5;236m▀▀\033[38;5;233m▀▀\033[38;5;234m▀▀\033[38;5;233m▀\033[38;5;187m▀\033[38;5;246m▀\033[38;5;145m▀\033[38;5;246m▀\033[38;5;101m▀▀\033[38;5;246m▀\033[38;5;108m▀\033[38;5;159m▀\033[38;5;109m▀\033[39m"
+    
+    # Print selected message.
+    printf "\\n%b\\n\\n" "$(tput bold)$(tput setaf 1)$message$(tput sgr0)" >&2
 }
 
 function_exists () {
